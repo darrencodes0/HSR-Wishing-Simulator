@@ -52,5 +52,9 @@
          </image>
       </ImageView>
       <AnchorPane layoutX="956.0" layoutY="21.0" prefHeight="39.0" prefWidth="209.0" style="-fx-background-color: BLACK;" />
+      <Label fx:id="PityActive" layoutX="808.0" layoutY="533.0" prefHeight="30.0" prefWidth="347.0" text="Guaranteed Featured Lightcone: YES" textFill="WHITE">
+         <font>
+            <Font size="20.0" />
+         </font></Label>
    </children>
 </AnchorPane>

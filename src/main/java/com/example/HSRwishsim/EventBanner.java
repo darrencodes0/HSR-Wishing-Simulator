@@ -19,6 +19,8 @@ public class EventBanner implements Banners{
     @FXML
     Label FiveStarPityLabel;
     @FXML
+    Label PityActive;
+    @FXML
     Button singleSummon;
     @FXML
     Button multiSummon;
@@ -29,24 +31,30 @@ public class EventBanner implements Banners{
     @FXML
     Button convertButton;
 
-        public void initialize(){
-            StellarJadeAmount.setText(""+AppInfo.getInstance().getJade());
-            FiveStarPityLabel.setText("5* Event Pity: " + AppInfo.getInstance().getFiveStarEventPity()  + "/90");
-            FourStarPityLabel.setText("4* Event Pity: " + AppInfo.getInstance().getFourStarEventPity() + "/10");
-            EventBannerTickets.setText(""+AppInfo.getInstance().getEventTickets());
-        }
-
     private int FiveStarPity = AppInfo.getInstance().getFiveStarEventPity();
     private int FourStarPity = AppInfo.getInstance().getFourStarEventPity();
     double normal5StarCharacterRate = 0.006;   // 0.6%
     double normal4StarCharacterOrWeaponRate = 0.051;  // 5.1%
     double normal3StarWeapon = 0.943;   // 94.3%
     public static boolean summonedOnEventBanner = false;
+    private boolean fiftyFiftyPity = AppInfo.getInstance().getFiftyFiftyEvent();
     private boolean has4Star = false;
     private boolean has5Star = false;
     public static boolean checkingDrops = false;
     public static boolean ticketConversion = false;
     private final int eventTickets = AppInfo.getInstance().getEventTickets();
+
+    public void initialize(){
+        StellarJadeAmount.setText(""+AppInfo.getInstance().getJade());
+        FiveStarPityLabel.setText("5* Event Pity: " + AppInfo.getInstance().getFiveStarEventPity()  + "/90");
+        FourStarPityLabel.setText("4* Event Pity: " + AppInfo.getInstance().getFourStarEventPity() + "/10");
+        EventBannerTickets.setText(""+AppInfo.getInstance().getEventTickets());
+        if(fiftyFiftyPity) {
+            PityActive.setText("Guaranteed Featured Character: NO");
+        } else{
+            PityActive.setText("Guaranteed Featured Character: YES");
+        }
+    }
 
     public void summoningMechanics(ActionEvent event) {
 
@@ -63,9 +71,29 @@ public class EventBanner implements Banners{
     }
 
     private void Guaranteed5StarCharacter() {
-        System.out.println("You got a guaranteed 5* Character!");
-        DisplayAndInventoryFor5Star(characters.getFiveStarCharacters());
+        if (fiftyFiftyPity) {
+            int winOrLost = rnd.nextInt(2);
+            if (winOrLost == 0) {
+                AppInfo.getInstance().setFiftyFiftyEvent(true);
+                System.out.println("YOU WON 50/50! 5* FEATURED CHARACTER");
+                System.out.println("Fifty Fifty Pity: " + fiftyFiftyPity);
+                DisplayAndInventoryFor5Star(characters.getFeaturedFiveStarCharacters());
+            } else {
+                AppInfo.getInstance().setFiftyFiftyEvent(false);
+                System.out.println("You lost 50/50 :C");
+                // lost 50/50
+                // next time guaranteed
+                System.out.println("Fifty Fifty Pity: " + fiftyFiftyPity);
+                DisplayAndInventoryFor5Star(characters.getFiveStarCharacters());
+            }
+        } else {
+            AppInfo.getInstance().setFiftyFiftyEvent(true);
+            System.out.println("(HIT PITY) Guaranteed 5* featured character");
+            DisplayAndInventoryFor5Star(characters.getFeaturedFiveStarCharacters());
+            System.out.println("Fifty Fifty Pity: " + fiftyFiftyPity);
+        }
     }
+
 
     private void Guaranteed4or5Star() {
         double fourStarOrFiveStar = rnd.nextDouble();
@@ -74,8 +102,27 @@ public class EventBanner implements Banners{
             System.out.println("You got a guaranteed 4* Character!");
             DisplayAndInventoryFor4StarCharacter(characters.getFourStarCharacters());
         } else {
-            System.out.println("You got a 5* Character from 4* pity!");
-            DisplayAndInventoryFor5Star(characters.getFiveStarCharacters());
+            if (fiftyFiftyPity) {
+                int winOrLost = rnd.nextInt(2);
+                if (winOrLost == 0) {
+                    AppInfo.getInstance().setFiftyFiftyEvent(true);
+                    System.out.println("YOU WON 50/50! 5* FEATURED CHARACTER");
+                    System.out.println("Fifty Fifty Pity: " + fiftyFiftyPity);
+                    DisplayAndInventoryFor5Star(characters.getFeaturedFiveStarCharacters());
+                } else {
+                    AppInfo.getInstance().setFiftyFiftyEvent(false);
+                    System.out.println("You lost 50/50 :C");
+                    // lost 50/50
+                    // next time guaranteed
+                    System.out.println("Fifty Fifty Pity: " + fiftyFiftyPity);
+                    DisplayAndInventoryFor5Star(characters.getFiveStarCharacters());
+                }
+            } else {
+                AppInfo.getInstance().setFiftyFiftyEvent(true);
+                System.out.println("(HIT PITY) Guaranteed 5* featured character");
+                DisplayAndInventoryFor5Star(characters.getFeaturedFiveStarCharacters());
+                System.out.println("Fifty Fifty Pity: " + fiftyFiftyPity);
+            }
         }
     }
 
@@ -83,7 +130,27 @@ public class EventBanner implements Banners{
         double generatedNumber = rnd.nextDouble();
 
         if (generatedNumber < normal5StarCharacterRate) {
-            DisplayAndInventoryFor5Star(characters.getFiveStarCharacters());
+            if (fiftyFiftyPity) {
+                int winOrLost = rnd.nextInt(2);
+                if (winOrLost == 0) {
+                    AppInfo.getInstance().setFiftyFiftyEvent(true);
+                    System.out.println("YOU WON 50/50! 5* FEATURED CHARACTER");
+                    System.out.println("Fifty Fifty Pity: " + fiftyFiftyPity);
+                    DisplayAndInventoryFor5Star(characters.getFeaturedFiveStarCharacters());
+                } else {
+                    AppInfo.getInstance().setFiftyFiftyEvent(false);
+                    System.out.println("You lost 50/50 :C");
+                    // lost 50/50
+                    // next time guaranteed
+                    System.out.println("Fifty Fifty Pity: " + fiftyFiftyPity);
+                    DisplayAndInventoryFor5Star(characters.getFiveStarCharacters());
+                }
+            } else {
+                AppInfo.getInstance().setFiftyFiftyEvent(true);
+                System.out.println("(HIT PITY) Guaranteed 5* featured character");
+                DisplayAndInventoryFor5Star(characters.getFeaturedFiveStarCharacters());
+                System.out.println("Fifty Fifty Pity: " + fiftyFiftyPity);
+            }
         } else if (generatedNumber < (normal5StarCharacterRate + normal4StarCharacterOrWeaponRate)) {
             DisplayFor4Star();
         } else {

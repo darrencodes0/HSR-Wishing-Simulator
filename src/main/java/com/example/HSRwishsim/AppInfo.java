@@ -16,6 +16,8 @@ public class AppInfo {
     private int standardTickets;
     private int EventTickets;
     private int LightConeTickets;
+    private boolean fiftyFiftyEvent = false;
+    private boolean SeventyFiveLightCone = false;
     private String currentItemDrops = "";
     private static AppInfo instance;
     private Map<String, Integer> lightCones = new HashMap<>();
@@ -176,5 +178,21 @@ public class AppInfo {
 
     public void setCurrentItemDrops(String currentItemDrops) {
         this.currentItemDrops = currentItemDrops;
+    }
+
+    public boolean getFiftyFiftyEvent() {
+        return fiftyFiftyEvent;
+    }
+
+    public void setFiftyFiftyEvent(boolean fiftyFiftyEvent) {
+        this.fiftyFiftyEvent = fiftyFiftyEvent;
+    }
+
+    public boolean getSeventyFiveLightCone() {
+        return SeventyFiveLightCone;
+    }
+
+    public void setSeventyFiveLightCone(boolean seventyFiveLightCone) {
+        SeventyFiveLightCone = seventyFiveLightCone;
     }
 }

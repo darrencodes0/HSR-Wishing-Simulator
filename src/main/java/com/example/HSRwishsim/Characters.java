@@ -12,11 +12,10 @@ public class Characters{
     public Characters(){
         addInFeatureFiveStarCharacters("Dan Heng - Imbibtor Lunae");
         addInFeatureFourStarCharacters("Yukong","Asta","March 7th");
-        addInFiveStarCharacters("Dan Heng - Imbibtor Lunae","Himeko","Welt",
-                "Bronya","Clara","Yanqing","Bailu","Gepard");
-        addInFourStarCharacters("Yukong","Asta","March 7th","Pela","Natasha",
+        addInFiveStarCharacters("Himeko","Welt", "Bronya","Clara","Yanqing","Bailu","Gepard");
+        addInFourStarCharacters("Pela","Natasha",
                 "Serval","Arlan","Hook","Sushang","Qingque","Dan Heng"
-                ,"Luka","Herta","Sampo","Tingyun");
+                ,"Luka","Herta","Sampo","Tingyun","Yukong","Asta","March 7th");
     }
 
     private void addInFeatureFiveStarCharacters(String... characters){
@@ -27,7 +26,7 @@ public class Characters{
 
     private void addInFeatureFourStarCharacters(String... characters){
         for(String character: characters){
-            FeaturedFiveStarCharacters.add(character);
+            FeaturedFourStarCharacters.add(character);
         }
     }
 

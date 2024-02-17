@@ -16,7 +16,7 @@ public class Main extends Application {
         try {
             Parent root = FXMLLoader.load(getClass().getResource("Tutorial.fxml"));
             Scene scene = new Scene(root);
-            primaryStage.setTitle("HSR Wishing Simulator 1.0");
+            primaryStage.setTitle("HSR Wishing Simulator 1.1");
             primaryStage.setResizable(false);
             primaryStage.setScene(scene);
             primaryStage.show();

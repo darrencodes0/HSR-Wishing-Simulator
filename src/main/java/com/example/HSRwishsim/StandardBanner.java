@@ -56,7 +56,7 @@ public class StandardBanner implements Banners{
         FiveStarStandardPity++;
 
         if (FiveStarStandardPity >= 90) {
-            Guaranteed5StarWeapon();
+            Guaranteed5StarCharacterorWeapon();
         } else if (FourStarStandardPity >= 10) {
             Guaranteed4StarOr5StarCharacter();
         } else {
@@ -64,9 +64,15 @@ public class StandardBanner implements Banners{
         }
     }
 
-    private void Guaranteed5StarWeapon() {
-        System.out.println("You got a guaranteed 5* Weapon!");
-        DisplayAndInventoryFor5StarLightCone(lightcones.getFiveStarLightCones());
+    private void Guaranteed5StarCharacterorWeapon() {
+        int characterOrWeapon = rnd.nextInt(2);
+        if(characterOrWeapon == 0){
+            System.out.println("You got a 5* guaranteed Character!");
+            DisplayAndInventoryFor5StarCharacter(characters.getFiveStarCharacters());
+        } else{
+            System.out.println("You got a guaranteed 5* Lightcone!");
+            DisplayAndInventoryFor5StarLightCone(lightcones.getFiveStarLightCones());
+        }
     }
 
     private void Guaranteed4StarOr5StarCharacter() {
@@ -76,8 +82,14 @@ public class StandardBanner implements Banners{
             System.out.println("You got a guaranteed 4* Character!");
             DisplayAndInventoryFor4StarCharacter(characters.getFourStarCharacters());
         } else {
-            System.out.println("You got a 5* Character from 4* pity!");
-            DisplayAndInventoryFor5StarCharacter(characters.getFiveStarCharacters());
+            int characterOrWeapon = rnd.nextInt(2);
+            if(characterOrWeapon == 0){
+                System.out.println("You got a 5* Character from 4* pity!");
+                DisplayAndInventoryFor5StarCharacter(characters.getFiveStarCharacters());
+            } else{
+                System.out.println("You got a 5* Lightcone from 4* pity!");
+                DisplayAndInventoryFor5StarLightCone(lightcones.getFiveStarLightCones());
+            }
         }
     }
 
@@ -85,8 +97,14 @@ public class StandardBanner implements Banners{
         double generatedNumber = rnd.nextDouble();
 
         if (generatedNumber < normal5StarCharacterRate) {
-            System.out.println("You got a 5* Lightcone!");
-            DisplayAndInventoryFor5StarLightCone(lightcones.getFiveStarLightCones());
+            int characterOrWeapon = rnd.nextInt(2);
+            if(characterOrWeapon == 0){
+                System.out.println("You got a 5* Character!");
+                DisplayAndInventoryFor5StarCharacter(characters.getFiveStarCharacters());
+            } else{
+                System.out.println("You got a 5* Lightcone!");
+                DisplayAndInventoryFor5StarLightCone(lightcones.getFiveStarLightCones());
+            }
         } else if (generatedNumber < (normal5StarCharacterRate + normal4StarCharacterOrWeaponRate)) {
             DisplayAndInventoryFor4Star();
         } else {
@@ -96,8 +114,8 @@ public class StandardBanner implements Banners{
 
     private void DisplayAndInventoryFor5StarCharacter(List<String> items) {
         int generatedValue = rnd.nextInt(items.size());
-        AppInfo.getInstance().displayDrops("(5*)(c) " + items.get(generatedValue));
-        AppInfo.getInstance().addCharacterToInventory("(5*)(c) " + items.get(generatedValue));
+        AppInfo.getInstance().displayDrops("(5*)(C) " + items.get(generatedValue));
+        AppInfo.getInstance().addCharacterToInventory("(5*)(C) " + items.get(generatedValue));
         resetPities();
         has5Star = true;
         has4Star = true;

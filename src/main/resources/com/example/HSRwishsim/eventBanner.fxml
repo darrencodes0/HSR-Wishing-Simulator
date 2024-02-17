@@ -60,6 +60,11 @@
                   <MotionBlur radius="0.0" />
                </effect>
             </StackPane>
+            <Label fx:id="PityActive" contentDisplay="RIGHT" layoutX="810.0" layoutY="523.0" prefHeight="30.0" prefWidth="347.0" text="Guaranteed Featured Character: YES" textFill="#f5eeee">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
          </children>
       </AnchorPane>
    </children>
