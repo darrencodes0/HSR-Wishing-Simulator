@@ -13,18 +13,21 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class FiveStarWish extends SceneDisplay implements Initializable {
+public class FiveStarWish implements Initializable {
 
     @FXML
     Label Drops;
     @FXML
     MediaView mediaView;
-    @FXML
+
+    final private SceneDisplay sceneDisplay = new SceneDisplay();
 
     @Override
-    public void initialize(URL arg0, ResourceBundle arg1){
-        super.initializeVideo("src/main/resources/com/example/HSRwishsim/media/5STARSUMMON.mp4");
-        mediaPlayer.setOnEndOfMedia(() -> {
+    public void initialize(URL arg0, ResourceBundle arg1) {
+        AppInfo.getInstance().setVideoPlayer("src/main/resources/com/example/HSRwishsim/media/5STARSUMMON.mp4");
+        mediaView.setMediaPlayer(AppInfo.getInstance().getMediaPlayer());
+        AppInfo.getInstance().getMediaPlayer().play();
+        AppInfo.getInstance().getMediaPlayer().setOnEndOfMedia(() -> {
             try {
                 replaceMediaPlayer("displayDrops.fxml");
             } catch (IOException e) {
@@ -34,8 +37,8 @@ public class FiveStarWish extends SceneDisplay implements Initializable {
     }
 
     public void seeDrops(ActionEvent event) throws IOException {
-        mediaPlayer.dispose();
-        super.displayScene("displayDrops.fxml", event);
+        AppInfo.getInstance().getMediaPlayer().dispose();
+        sceneDisplay.displayScene("displayDrops.fxml", event);
     }
 
     private void replaceMediaPlayer(String fxmlFile) throws IOException {
@@ -45,6 +48,5 @@ public class FiveStarWish extends SceneDisplay implements Initializable {
         Scene scene = new Scene(root);
         stage.setScene(scene);
     }
-
 
 }

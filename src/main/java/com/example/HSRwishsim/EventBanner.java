@@ -4,8 +4,12 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 
+import java.io.File;
 import java.io.IOException;
+import java.net.MalformedURLException;
 import java.util.List;
 
 public class EventBanner implements Banners{
@@ -37,7 +41,7 @@ public class EventBanner implements Banners{
     double normal4StarCharacterOrWeaponRate = 0.051;  // 5.1%
     double normal3StarWeapon = 0.943;   // 94.3%
     public static boolean summonedOnEventBanner = false;
-    private boolean fiftyFiftyPity = AppInfo.getInstance().getFiftyFiftyEvent();
+    private final boolean fiftyFiftyPity = AppInfo.getInstance().getFiftyFiftyEvent();
     private boolean has4Star = false;
     private boolean has5Star = false;
     public static boolean checkingDrops = false;

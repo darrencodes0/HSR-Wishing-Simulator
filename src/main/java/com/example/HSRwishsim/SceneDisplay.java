@@ -40,6 +40,14 @@ public class SceneDisplay{
         mediaPlayer.play();
     }
 
+    public void initializeSoundTrack(String fileName) {
+        media = new Media(new File(fileName).toURI().toString());
+        mediaPlayer.stop(); // Stop any previous media playback
+        mediaPlayer = new MediaPlayer(media); // Set the new media
+        mediaPlayer.play(); // Start playback
+    }
+
+
     public void displayScene(String fxmlFile, ActionEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlFile));
         root = loader.load();
@@ -58,21 +66,16 @@ public class SceneDisplay{
         }
     }
 
-    public void switchToCurrentSummonedBanner(ActionEvent event) throws IOException {
-        try {
-            if (EventBanner.summonedOnEventBanner) {
-                displayScene("eventBanner.fxml", event);
-                EventBanner.summonedOnEventBanner = false;
-            } else if (StandardBanner.summonedOnStandardBanner) {
-                displayScene("standardBanner.fxml", event);
-                StandardBanner.summonedOnStandardBanner = false;
-            } else {
-                displayScene("LightConeBanner.fxml", event);
-                LightConeBanner.summonedOnLightConeBanner = false;
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+    public MediaView getMediaView() {
+        return mediaView;
+    }
+
+    public void setMediaPlayer(MediaPlayer mediaPlayer) {
+        this.mediaPlayer = mediaPlayer;
+    }
+
+    public MediaPlayer getMediaPlayer() {
+        return mediaPlayer;
     }
 
     private Stage stage;

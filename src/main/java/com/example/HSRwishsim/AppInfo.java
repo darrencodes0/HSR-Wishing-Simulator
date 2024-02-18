@@ -1,5 +1,11 @@
 package com.example.HSRwishsim;
 
+import javafx.fxml.FXML;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
+import javafx.scene.media.MediaView;
+
+import java.io.File;
 import java.util.*;
 
 public class AppInfo {
@@ -20,8 +26,14 @@ public class AppInfo {
     private boolean SeventyFiveLightCone = false;
     private String currentItemDrops = "";
     private static AppInfo instance;
+    private MediaPlayer mediaPlayer;
     private Map<String, Integer> lightCones = new HashMap<>();
     private Map<String, Integer> characters = new HashMap<>();
+
+    @FXML
+    File file;
+    Media media;
+    MediaView mediaView;
 
     private AppInfo() {
 
@@ -195,4 +207,37 @@ public class AppInfo {
     public void setSeventyFiveLightCone(boolean seventyFiveLightCone) {
         SeventyFiveLightCone = seventyFiveLightCone;
     }
+
+    public MediaPlayer getMediaPlayer() {
+        return mediaPlayer;
+    }
+
+    public Media getMedia() {
+        return media;
+    }
+
+    public void setSoundPlayer(String mediaPath){
+        if(mediaPlayer != null) {
+            mediaPlayer.stop();
+            mediaPlayer.dispose();
+        }
+        Media media = new Media(mediaPath);
+        mediaPlayer = new MediaPlayer(media);
+    }
+
+    public void setVideoPlayer(String fileName){
+        if(mediaPlayer != null) {
+            mediaPlayer.stop();
+            mediaPlayer.dispose();
+        }
+        file = new File(fileName);
+        media = new Media(file.toURI().toString());
+        mediaPlayer = new MediaPlayer(media);
+    }
+
+    public void setMediaView(MediaView view) {
+        this.mediaView = view;
+    }
+
+
 }

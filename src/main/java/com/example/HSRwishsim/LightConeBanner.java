@@ -44,6 +44,7 @@ public class LightConeBanner implements Banners{
     private boolean has5Star = false;
     private boolean seventyFivePity = AppInfo.getInstance().getSeventyFiveLightCone();
     private final int LightConeTickets = AppInfo.getInstance().getLightConeTickets();
+    final private SceneDisplay sceneDisplay = new SceneDisplay();
 
     public void initialize(){
         EventBannerTickets.setText("" + AppInfo.getInstance().getEventTickets());

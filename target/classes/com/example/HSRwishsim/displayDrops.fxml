@@ -6,7 +6,6 @@
 <?import javafx.scene.text.Font?>
 
 <AnchorPane prefHeight="587.0" prefWidth="600.0" style="-fx-background-color: BLACK; -fx-border-color: white;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.HSRwishsim.DisplayDrops">
-   <children>
       <Button fx:id="returnButton" layoutX="263.0" layoutY="506.0" mnemonicParsing="false" onAction="#switchToCurrentBanner" prefHeight="39.0" prefWidth="74.0" style="-fx-border-color: white; -fx-background-color: black; -fx-border-radius: 6px;" text="Continue" textFill="#fcf8f8" />
       <Label fx:id="drops" alignment="TOP_CENTER" layoutX="93.0" layoutY="94.0" lineSpacing="10.0" prefHeight="385.0" prefWidth="415.0" style="-fx-background-color: BLACK; -fx-border-color: WHITE; -fx-border-width: 2PX;" text="Items" textFill="#00f8ffdb">
          <font>
@@ -18,5 +17,4 @@
             <Font name="Colonna MT" size="52.0" />
          </font>
       </Label>
-   </children>
 </AnchorPane>

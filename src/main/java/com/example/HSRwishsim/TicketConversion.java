@@ -6,11 +6,15 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 
+import java.io.File;
 import java.io.IOException;
+import java.net.MalformedURLException;
 
 
-public class TicketConversion extends SceneDisplay{
+public class TicketConversion{
 
     @FXML
     Button convertButton;
@@ -30,11 +34,21 @@ public class TicketConversion extends SceneDisplay{
     private final int jadeAmount = AppInfo.getInstance().getJade();
     private final int standardTicketAmount = AppInfo.getInstance().getStandardTickets();
     private final int eventTicketAmount = AppInfo.getInstance().getEventTickets();
+    final private SceneDisplay sceneDisplay = new SceneDisplay();
 
     public void initialize(){
         JadeAmount.setText("Jade Amount: " + jadeAmount);
         StandardTicketAmount.setText("Current Standard Tickets: " + standardTicketAmount);
         EventTicketAmount.setText("Current Event Tickets: " + eventTicketAmount);
+        String audioFilePath = "src/main/resources/com/example/HSRwishsim/media/elevatormusic.mp3";
+
+        try {
+            Media media = new Media(new File(audioFilePath).toURI().toURL().toString());
+            sceneDisplay.mediaPlayer = new MediaPlayer(media);
+            sceneDisplay.mediaPlayer.play();
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        }
     }
 
     public void ticketConversion(ActionEvent event) {
@@ -98,15 +112,16 @@ public class TicketConversion extends SceneDisplay{
     }
 
     public void switchToCurrentBanner(ActionEvent event) {
+        sceneDisplay.mediaPlayer.dispose();
         try {
             if (EventBanner.ticketConversion) {
-                super.displayScene("eventBanner.fxml", event);
+                sceneDisplay.displayScene("eventBanner.fxml", event);
                 EventBanner.ticketConversion = false;
             } else if (LightConeBanner.ticketConversion) {
-                super.displayScene("lightConeBanner.fxml", event);
+                sceneDisplay.displayScene("lightConeBanner.fxml", event);
                 LightConeBanner.ticketConversion = false;
             } else if (StandardBanner.ticketConversion) {
-                super.displayScene("standardBanner.fxml", event);
+                sceneDisplay.displayScene("standardBanner.fxml", event);
                 StandardBanner.ticketConversion = false;
             }
         }catch(IOException e){
@@ -115,3 +130,5 @@ public class TicketConversion extends SceneDisplay{
     }
 
 }
+
+// make sure u convert ALL SCENEDISPLAY TO OBJECTS!!!

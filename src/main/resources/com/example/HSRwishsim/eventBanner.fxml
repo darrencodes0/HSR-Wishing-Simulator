@@ -11,13 +11,9 @@
 <?import javafx.scene.text.Font?>
 
 <FlowPane xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.HSRwishsim.EventBanner">
-   <children>
       <AnchorPane prefHeight="654.0" prefWidth="1173.0">
-         <children>
             <ImageView fitHeight="705.0" fitWidth="1240.0" pickOnBounds="true" preserveRatio="true">
-               <image>
                   <Image url="@images/danhengbanner.png" />
-               </image>
             </ImageView>
             <Button fx:id="singleSummon" layoutX="748.0" layoutY="616.0" mnemonicParsing="false" onAction="#singleSummon" opacity="0.0" prefHeight="36.0" prefWidth="199.0" text="1x" />
             <Button fx:id="multiSummon" layoutX="963.0" layoutY="616.0" mnemonicParsing="false" onAction="#multiSummon" opacity="0.0" prefHeight="61.0" prefWidth="232.0" text="10x" />
@@ -65,7 +61,5 @@
                   <Font size="20.0" />
                </font>
             </Label>
-         </children>
       </AnchorPane>
-   </children>
 </FlowPane>

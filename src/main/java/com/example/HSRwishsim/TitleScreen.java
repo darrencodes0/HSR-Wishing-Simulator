@@ -1,19 +1,17 @@
 package com.example.HSRwishsim;
-import com.example.HSRwishsim.AppInfo;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.TextField;
-import javafx.stage.Stage;
-import javafx.scene.Node;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 
+import java.io.File;
 import java.io.IOException;
+import java.net.MalformedURLException;
 
-public class TitleScreen extends SceneDisplay{
+public class TitleScreen{
 
     @FXML
     private TextField InsertStellarJade;
@@ -21,6 +19,19 @@ public class TitleScreen extends SceneDisplay{
     TextField InsertEventAndLightConeBannerTickets;
     @FXML
     TextField InsertStandardBannerTickets;
+
+    final private SceneDisplay sceneDisplay = new SceneDisplay();
+
+    public void initialize(){
+        String audioFilePath = "src/main/resources/com/example/HSRwishsim/media/SpaceWalk.mp3";
+
+        try {
+            AppInfo.getInstance().setSoundPlayer(new File(audioFilePath).toURI().toURL().toString());
+            AppInfo.getInstance().getMediaPlayer().play();
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        }
+    }
 
     public void switchToEventBanner(ActionEvent event) throws IOException, NumberFormatException{
         int jades;
@@ -72,7 +83,8 @@ public class TitleScreen extends SceneDisplay{
             return;
         }
 
-        super.switchToEventBanner(event);
+        AppInfo.getInstance().getMediaPlayer().dispose();
+        sceneDisplay.switchToEventBanner(event);
     }
 
 

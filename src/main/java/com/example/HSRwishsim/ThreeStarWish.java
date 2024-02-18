@@ -29,9 +29,11 @@ public class ThreeStarWish extends SceneDisplay implements Initializable {
     @FXML
 
     @Override
-    public void initialize(URL arg0, ResourceBundle arg1){
-        super.initializeVideo("src/main/resources/com/example/HSRwishsim/media/3STARSUMMON.mp4");
-        mediaPlayer.setOnEndOfMedia(() -> {
+    public void initialize(URL arg0, ResourceBundle arg1) {
+        AppInfo.getInstance().setVideoPlayer("src/main/resources/com/example/HSRwishsim/media/3STARSUMMON.mp4");
+        mediaView.setMediaPlayer(AppInfo.getInstance().getMediaPlayer());
+        AppInfo.getInstance().getMediaPlayer().play();
+        AppInfo.getInstance().getMediaPlayer().setOnEndOfMedia(() -> {
             try {
                 replaceMediaPlayer("displayDrops.fxml");
             } catch (IOException e) {
@@ -41,7 +43,7 @@ public class ThreeStarWish extends SceneDisplay implements Initializable {
     }
 
     public void seeDrops(ActionEvent event) throws IOException {
-        mediaPlayer.dispose();
+        AppInfo.getInstance().getMediaPlayer().dispose();
         super.displayScene("displayDrops.fxml", event);
     }
 

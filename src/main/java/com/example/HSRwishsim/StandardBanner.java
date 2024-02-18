@@ -48,6 +48,7 @@ public class StandardBanner implements Banners{
     private boolean has4Star = false;
     private boolean has5Star = false;
     private final int standardTickets = AppInfo.getInstance().getStandardTickets();
+    final private SceneDisplay sceneDisplay = new SceneDisplay();
 
 
     public void summoningMechanics(ActionEvent event) {
