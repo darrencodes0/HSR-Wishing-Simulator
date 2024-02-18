@@ -13,20 +13,22 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class FourStarWish implements Initializable {
+public class Wishes implements Initializable {
 
     @FXML
     Label Drops;
     @FXML
     MediaView mediaView;
-    @FXML
 
-    MediaController mediaController = MediaController.getInstance();
+    final private MediaController mediaController = MediaController.getInstance();
     final private SceneDisplay sceneDisplay = new SceneDisplay();
+
+    public Wishes() {
+
+    }
 
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
-        mediaController.setVideoPlayer("src/main/resources/com/example/HSRwishsim/media/4STARSUMMON.mp4");
         mediaView.setMediaPlayer(MediaController.getInstance().getMediaPlayer());
         mediaController.getMediaPlayer().play();
         mediaController.getMediaPlayer().setOnEndOfMedia(() -> {
@@ -38,8 +40,6 @@ public class FourStarWish implements Initializable {
         });
     }
 
-
-
     public void seeDrops(ActionEvent event) throws IOException {
         mediaController.getMediaPlayer().dispose();
         sceneDisplay.displayScene("displayDrops.fxml", event);
@@ -48,11 +48,9 @@ public class FourStarWish implements Initializable {
     private void replaceMediaPlayer(String fxmlFile) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlFile));
         Parent root = loader.load();
-        Stage stage = (Stage ) mediaView.getScene().getWindow();
+        Stage stage = (Stage) this.mediaView.getScene().getWindow();
         Scene scene = new Scene(root);
         stage.setScene(scene);
     }
-
-
 
 }

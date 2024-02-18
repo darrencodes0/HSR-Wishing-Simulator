@@ -7,7 +7,7 @@ import javafx.scene.control.Label;
 import java.io.IOException;
 import java.util.List;
 
-public class LightConeBanner implements Banners{
+public class LightConeBanner extends BannerController{
 
     @FXML
     Button switchToStandard;
@@ -37,13 +37,7 @@ public class LightConeBanner implements Banners{
     public static boolean ticketConversion = false;
     private int FiveStarLightConePity = AppInfo.getInstance().getFiveStarLightConePity();
     private int FourStarLightConePity = AppInfo.getInstance().getFourStarLightConePity();
-    double normal5StarCharacterRate = 0.007;   // 0.7%
-    double normal4StarCharacterOrWeaponRate = 0.06;  // 6%
-    double normal3StarWeapon = 0.933;   // 93.3%
-    private boolean has4Star = false;
-    private boolean has5Star = false;
-    private boolean seventyFivePity = AppInfo.getInstance().getSeventyFiveLightCone();
-    private final int LightConeTickets = AppInfo.getInstance().getLightConeTickets();
+    private final boolean seventyFivePity = AppInfo.getInstance().getSeventyFiveLightCone();
 
     public void initialize(){
         EventBannerTickets.setText("" + AppInfo.getInstance().getEventTickets());
@@ -252,14 +246,14 @@ public class LightConeBanner implements Banners{
     private void displayWishAnimation(ActionEvent event) throws IOException {
         summonedOnLightConeBanner = true;
         if(has5Star){
-            sceneDisplay.displayScene("FiveStarSummon.fxml",event);
+            sceneDisplay.displayVideo("FiveStarSummon.fxml",event,"src/main/resources/com/example/HSRwishsim/media/5STARSUMMON.mp4");
             has5Star = false;
             has4Star = false;
         } else if(has4Star){
-            sceneDisplay.displayScene("FourStarSummon.fxml",event);
+            sceneDisplay.displayVideo("FourStarSummon.fxml",event,"src/main/resources/com/example/HSRwishsim/media/4STARSUMMON.mp4");
             has4Star = false;
         } else{
-            sceneDisplay.displayScene("ThreeStarSummon.fxml",event);
+            sceneDisplay.displayVideo("ThreeStarSummon.fxml",event,"src/main/resources/com/example/HSRwishsim/media/3STARSUMMON.mp4");
         }
     }
 

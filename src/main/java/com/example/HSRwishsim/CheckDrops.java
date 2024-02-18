@@ -3,9 +3,7 @@ package com.example.HSRwishsim;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
-import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
-
 import java.io.File;
 import java.io.IOException;
 import java.net.MalformedURLException;

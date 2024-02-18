@@ -7,7 +7,7 @@ import javafx.scene.control.Label;
 import java.io.IOException;
 import java.util.List;
 
-public class StandardBanner implements Banners{
+public class StandardBanner extends BannerController{
 
     @FXML
     Button switchToLightCone;
@@ -198,14 +198,14 @@ public class StandardBanner implements Banners{
     private void displayWishAnimation(ActionEvent event) throws IOException {
         summonedOnStandardBanner = true;
         if(has5Star){
-            sceneDisplay.displayScene("FiveStarSummon.fxml",event);
+            sceneDisplay.displayVideo("FiveStarSummon.fxml",event,"src/main/resources/com/example/HSRwishsim/media/5STARSUMMON.mp4");
             has5Star = false;
             has4Star = false;
         } else if(has4Star){
-            sceneDisplay.displayScene("FourStarSummon.fxml",event);
+            sceneDisplay.displayVideo("FourStarSummon.fxml",event,"src/main/resources/com/example/HSRwishsim/media/4STARSUMMON.mp4");
             has4Star = false;
         } else{
-            sceneDisplay.displayScene("ThreeStarSummon.fxml",event);
+            sceneDisplay.displayVideo("ThreeStarSummon.fxml",event,"src/main/resources/com/example/HSRwishsim/media/3STARSUMMON.mp4");
         }
     }
 

@@ -8,7 +8,6 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
-
 import java.io.File;
 import java.io.IOException;
 import java.net.MalformedURLException;
@@ -34,7 +33,7 @@ public class TicketConversion{
     private final int jadeAmount = AppInfo.getInstance().getJade();
     private final int standardTicketAmount = AppInfo.getInstance().getStandardTickets();
     private final int eventTicketAmount = AppInfo.getInstance().getEventTickets();
-    final private SceneDisplay sceneDisplay = new SceneDisplay();
+    private final SceneDisplay sceneDisplay = new SceneDisplay();
 
     public void initialize(){
         JadeAmount.setText("Jade Amount: " + jadeAmount);

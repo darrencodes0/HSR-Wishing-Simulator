@@ -4,15 +4,10 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.media.Media;
-import javafx.scene.media.MediaPlayer;
-
-import java.io.File;
 import java.io.IOException;
-import java.net.MalformedURLException;
 import java.util.List;
 
-public class EventBanner implements Banners{
+public class EventBanner extends BannerController{
 
     @FXML
     Label StellarJadeAmount;
@@ -37,17 +32,9 @@ public class EventBanner implements Banners{
 
     private int FiveStarPity = AppInfo.getInstance().getFiveStarEventPity();
     private int FourStarPity = AppInfo.getInstance().getFourStarEventPity();
-    double normal5StarCharacterRate = 0.006;   // 0.6%
-    double normal4StarCharacterOrWeaponRate = 0.051;  // 5.1%
-    double normal3StarWeapon = 0.943;   // 94.3%
     public static boolean summonedOnEventBanner = false;
     private final boolean fiftyFiftyPity = AppInfo.getInstance().getFiftyFiftyEvent();
-    private boolean has4Star = false;
-    private boolean has5Star = false;
-    public static boolean checkingDrops = false;
-    public static boolean ticketConversion = false;
     private final int eventTickets = AppInfo.getInstance().getEventTickets();
-    final private SceneDisplay sceneDisplay = new SceneDisplay();
 
     public void initialize(){
         StellarJadeAmount.setText(""+AppInfo.getInstance().getJade());
@@ -124,7 +111,7 @@ public class EventBanner implements Banners{
                 }
             } else {
                 AppInfo.getInstance().setFiftyFiftyEvent(true);
-                System.out.println("(HIT PITY) Guaranteed 5* featured character");
+                System.out.println("(HIT PITY) Guaranteed 5* featured character from 4* pity");
                 DisplayAndInventoryFor5Star(characters.getFeaturedFiveStarCharacters());
                 System.out.println("Fifty Fifty Pity: " + fiftyFiftyPity);
             }
@@ -152,7 +139,7 @@ public class EventBanner implements Banners{
                 }
             } else {
                 AppInfo.getInstance().setFiftyFiftyEvent(true);
-                System.out.println("(HIT PITY) Guaranteed 5* featured character");
+                System.out.println("(LUCKY NORMAL) Guaranteed 5* featured character");
                 DisplayAndInventoryFor5Star(characters.getFeaturedFiveStarCharacters());
                 System.out.println("Fifty Fifty Pity: " + fiftyFiftyPity);
             }
@@ -205,7 +192,7 @@ public class EventBanner implements Banners{
         FourStarPity = 0;
     }
 
-    private void resetPities() {
+    protected void resetPities() {
         FourStarPity = 0;
         FiveStarPity = 0;
     }
@@ -240,14 +227,14 @@ public class EventBanner implements Banners{
     private void displayWishAnimation(ActionEvent event) throws IOException {
         summonedOnEventBanner = true;
         if(has5Star){
-            sceneDisplay.displayScene("FiveStarSummon.fxml",event);
+            sceneDisplay.displayVideo("FiveStarSummon.fxml",event,"src/main/resources/com/example/HSRwishsim/media/5STARSUMMON.mp4");
             has5Star = false;
             has4Star = false;
         } else if(has4Star){
-            sceneDisplay.displayScene("FourStarSummon.fxml",event);
+            sceneDisplay.displayVideo("FourStarSummon.fxml",event,"src/main/resources/com/example/HSRwishsim/media/4STARSUMMON.mp4");
             has4Star = false;
         } else{
-            sceneDisplay.displayScene("ThreeStarSummon.fxml",event);
+            sceneDisplay.displayVideo("ThreeStarSummon.fxml",event,"src/main/resources/com/example/HSRwishsim/media/3STARSUMMON.mp4");
         }
     }
 

@@ -16,7 +16,7 @@ public class MediaController{
 
     private MediaController() {
 
-        }
+    }
 
 
 public static synchronized MediaController getInstance() {
