@@ -82,7 +82,7 @@ public class TitleScreen{
         }
 
         mediaController.getMediaPlayer().dispose();
-        sceneDisplay.switchToEventBanner(event);
+        sceneDisplay.displayScene("eventBanner.fxml",event);
     }
 
 

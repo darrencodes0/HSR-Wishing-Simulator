@@ -210,7 +210,7 @@ public class StandardBanner extends BannerController{
     }
 
     public void switchToEventBanner(ActionEvent event) throws IOException{
-        sceneDisplay.switchToEventBanner(event);
+        sceneDisplay.displayScene("eventBanner.fxml",event);
     }
 
     public void switchToLightConeBanner(ActionEvent event) throws IOException {

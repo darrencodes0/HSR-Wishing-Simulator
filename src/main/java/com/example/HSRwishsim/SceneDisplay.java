@@ -48,14 +48,6 @@ public class SceneDisplay{
         stage.show();
     }
 
-    public void switchToEventBanner(ActionEvent event){
-        try {
-            displayScene("eventBanner.fxml", event);
-        }catch(IOException e){
-            e.printStackTrace();
-        }
-    }
-
     private Parent root;
 
 }

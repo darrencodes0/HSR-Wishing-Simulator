@@ -40,7 +40,7 @@ public class CheckDrops {
     }
 
     public void switchToCurrentBanner(ActionEvent event) {
-        mediaPlayer.dispose();
+        mediaController.getMediaPlayer().dispose();
         try {
             if (EventBanner.checkingDrops) {
                 sceneDisplay.displayScene("eventBanner.fxml", event);

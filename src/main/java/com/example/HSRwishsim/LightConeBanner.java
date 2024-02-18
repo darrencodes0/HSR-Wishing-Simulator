@@ -267,7 +267,7 @@ public class LightConeBanner extends BannerController{
     }
 
     public void switchToEventBanner(ActionEvent event) throws IOException{
-        sceneDisplay.switchToEventBanner(event);
+        sceneDisplay.displayScene("eventBanner.fxml",event);
     }
 
     public void switchToConversion(ActionEvent event) throws IOException{
