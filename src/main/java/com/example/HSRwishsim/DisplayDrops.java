@@ -19,24 +19,17 @@ Button returnButton;
 @FXML
 Label drops;
 
-final private SceneDisplay sceneDisplay = new SceneDisplay();
+    final private SceneDisplay sceneDisplay = new SceneDisplay();
+    private final MediaController mediaController = MediaController.getInstance();
+
 
     public void initialize(){
         drops.setText(AppInfo.getInstance().getCurrentItemDrops());
         AppInfo.getInstance().setCurrentItemDrops("");
-        String audioFilePath = "src/main/resources/com/example/HSRwishsim/media/elevatormusic.mp3";
-
-        try {
-            Media media = new Media(new File(audioFilePath).toURI().toURL().toString());
-            sceneDisplay.mediaPlayer = new MediaPlayer(media);
-            sceneDisplay.mediaPlayer.play();
-        } catch (MalformedURLException e) {
-            e.printStackTrace();
-        }
     }
 
     public void switchToCurrentBanner(ActionEvent event) {
-        sceneDisplay.mediaPlayer.dispose();
+        mediaController.getMediaPlayer().dispose();
         try {
             if (EventBanner.summonedOnEventBanner) {
                 sceneDisplay.displayScene("eventBanner.fxml", event);

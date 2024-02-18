@@ -21,13 +21,14 @@ public class TitleScreen{
     TextField InsertStandardBannerTickets;
 
     final private SceneDisplay sceneDisplay = new SceneDisplay();
+    final private MediaController mediaController = MediaController.getInstance();
 
     public void initialize(){
         String audioFilePath = "src/main/resources/com/example/HSRwishsim/media/SpaceWalk.mp3";
 
         try {
-            AppInfo.getInstance().setSoundPlayer(new File(audioFilePath).toURI().toURL().toString());
-            AppInfo.getInstance().getMediaPlayer().play();
+            mediaController.setSoundPlayer(new File(audioFilePath).toURI().toURL().toString());
+            mediaController.getMediaPlayer().play();
         } catch (MalformedURLException e) {
             e.printStackTrace();
         }
@@ -83,7 +84,7 @@ public class TitleScreen{
             return;
         }
 
-        AppInfo.getInstance().getMediaPlayer().dispose();
+        mediaController.getMediaPlayer().dispose();
         sceneDisplay.switchToEventBanner(event);
     }
 

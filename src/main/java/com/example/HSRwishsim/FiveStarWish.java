@@ -20,14 +20,15 @@ public class FiveStarWish implements Initializable {
     @FXML
     MediaView mediaView;
 
+    final private MediaController mediaController = MediaController.getInstance();
     final private SceneDisplay sceneDisplay = new SceneDisplay();
 
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
-        AppInfo.getInstance().setVideoPlayer("src/main/resources/com/example/HSRwishsim/media/5STARSUMMON.mp4");
-        mediaView.setMediaPlayer(AppInfo.getInstance().getMediaPlayer());
-        AppInfo.getInstance().getMediaPlayer().play();
-        AppInfo.getInstance().getMediaPlayer().setOnEndOfMedia(() -> {
+        mediaController.setVideoPlayer("src/main/resources/com/example/HSRwishsim/media/5STARSUMMON.mp4");
+        mediaView.setMediaPlayer(MediaController.getInstance().getMediaPlayer());
+        mediaController.getMediaPlayer().play();
+        mediaController.getMediaPlayer().setOnEndOfMedia(() -> {
             try {
                 replaceMediaPlayer("displayDrops.fxml");
             } catch (IOException e) {
@@ -37,7 +38,7 @@ public class FiveStarWish implements Initializable {
     }
 
     public void seeDrops(ActionEvent event) throws IOException {
-        AppInfo.getInstance().getMediaPlayer().dispose();
+        mediaController.getMediaPlayer().dispose();
         sceneDisplay.displayScene("displayDrops.fxml", event);
     }
 

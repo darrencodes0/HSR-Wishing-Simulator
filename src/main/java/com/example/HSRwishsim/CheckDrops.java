@@ -26,10 +26,19 @@ public class CheckDrops {
     MediaPlayer mediaPlayer;
 
     private final SceneDisplay sceneDisplay = new SceneDisplay();
+    final private MediaController mediaController = MediaController.getInstance();
 
     public void initialize(){
         displayLightCones.setText(AppInfo.getInstance().displayLightConeInventory());
         displayCharacters.setText(AppInfo.getInstance().displayCharacterInventory());
+            String audioFilePath = "src/main/resources/com/example/HSRwishsim/media/SpaceWalk.mp3";
+
+            try {
+                mediaController.setSoundPlayer(new File(audioFilePath).toURI().toURL().toString());
+                mediaController.getMediaPlayer().play();
+            } catch (MalformedURLException e) {
+                e.printStackTrace();
+            }
     }
 
     public void switchToCurrentBanner(ActionEvent event) {

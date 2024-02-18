@@ -1,6 +1,4 @@
 package com.example.HSRwishsim;
-
-import java.lang.reflect.Array;
 import java.util.*;
 public class Lightcones {
 

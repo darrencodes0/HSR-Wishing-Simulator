@@ -47,6 +47,7 @@ public class EventBanner implements Banners{
     public static boolean checkingDrops = false;
     public static boolean ticketConversion = false;
     private final int eventTickets = AppInfo.getInstance().getEventTickets();
+    final private SceneDisplay sceneDisplay = new SceneDisplay();
 
     public void initialize(){
         StellarJadeAmount.setText(""+AppInfo.getInstance().getJade());
