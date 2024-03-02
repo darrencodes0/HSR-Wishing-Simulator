@@ -55,69 +55,69 @@ public class StandardBanner extends BannerController{
         FiveStarStandardPity++;
 
         if (FiveStarStandardPity >= 90) {
-            Guaranteed5StarCharacterorWeapon();
+            guaranteed5StarCharacterorWeapon();
         } else if (FourStarStandardPity >= 10) {
-            Guaranteed4StarOr5StarWeaponorCharacter();
+            guaranteed4StarOr5StarWeaponorCharacter();
         } else {
-            NormalSummon();
+            normalSummon();
         }
     }
 
-    private void Guaranteed5StarCharacterorWeapon() {
+    private void guaranteed5StarCharacterorWeapon() {
         int characterOrWeapon = rnd.nextInt(2);
         if(characterOrWeapon == 0){
             System.out.println("You got a 5* guaranteed Character!");
-            DisplayAndInventoryFor5StarCharacter(characters.getFiveStarCharacters());
+            displayAndInventoryFor5StarCharacter(characters.getAllFiveStarCharacters());
         } else{
             System.out.println("You got a guaranteed 5* Lightcone!");
-            DisplayAndInventoryFor5StarLightCone(lightcones.getFiveStarLightCones());
+            displayAndInventoryFor5StarLightCone(lightcones.getAllFiveStarLightCones());
         }
     }
 
-    private void Guaranteed4StarOr5StarWeaponorCharacter() {
+    private void guaranteed4StarOr5StarWeaponorCharacter() {
         double fourStarOrFiveStar = rnd.nextDouble();
 
         if (fourStarOrFiveStar > 0.07) {
             int weaponOrCharacter = rnd.nextInt(2);
             if(weaponOrCharacter == 0) {
                 System.out.println("You got a guaranteed 4* Character!");
-                DisplayAndInventoryFor4StarCharacter(characters.getFourStarCharacters());
+                displayAndInventoryFor4StarCharacter(characters.getAllFourStarCharacters());
             } else{
                 System.out.println("You got a guaranteed 4* Lightcone!");
-                DisplayAndInventoryFor4StarLightCone(lightcones.getFourStarLightCones());
+                displayAndInventoryFor4StarLightCone(lightcones.getAllFourStarLightCones());
             }
         } else {
             int characterOrWeapon = rnd.nextInt(2);
             if(characterOrWeapon == 0){
                 System.out.println("You got a 5* Character from 4* pity!");
-                DisplayAndInventoryFor5StarCharacter(characters.getFiveStarCharacters());
+                displayAndInventoryFor5StarCharacter(characters.getAllFiveStarCharacters());
             } else{
                 System.out.println("You got a 5* Lightcone from 4* pity!");
-                DisplayAndInventoryFor5StarLightCone(lightcones.getFiveStarLightCones());
+                displayAndInventoryFor5StarLightCone(lightcones.getAllFiveStarLightCones());
             }
         }
     }
 
-    private void NormalSummon() {
+    private void normalSummon() {
         double generatedNumber = rnd.nextDouble();
 
         if (generatedNumber < normal5StarCharacterRate) {
             int characterOrWeapon = rnd.nextInt(2);
             if(characterOrWeapon == 0){
                 System.out.println("You got a 5* Character!");
-                DisplayAndInventoryFor5StarCharacter(characters.getFiveStarCharacters());
+                displayAndInventoryFor5StarCharacter(characters.getAllFiveStarCharacters());
             } else{
                 System.out.println("You got a 5* Lightcone!");
-                DisplayAndInventoryFor5StarLightCone(lightcones.getFiveStarLightCones());
+                displayAndInventoryFor5StarLightCone(lightcones.getAllFiveStarLightCones());
             }
         } else if (generatedNumber < (normal5StarCharacterRate + normal4StarCharacterOrWeaponRate)) {
-            DisplayAndInventoryFor4Star();
+            displayAndInventoryFor4Star();
         } else {
-            DisplayAndInventoryFor3Star(lightcones.getThreeStarLightCones());
+            displayAndInventoryFor3Star(lightcones.getThreeStarLightCones());
         }
     }
 
-    private void DisplayAndInventoryFor5StarCharacter(List<String> items) {
+    private void displayAndInventoryFor5StarCharacter(List<String> items) {
         int generatedValue = rnd.nextInt(items.size());
         appInfo.displayDrops("(5*)(C) " + items.get(generatedValue));
         appInfo.addCharacterToInventory("(5*)(C) " + items.get(generatedValue));
@@ -126,7 +126,7 @@ public class StandardBanner extends BannerController{
         has4Star = true;
     }
 
-    private void DisplayAndInventoryFor5StarLightCone(List<String> items) {
+    private void displayAndInventoryFor5StarLightCone(List<String> items) {
         int generatedValue = rnd.nextInt(items.size());
         appInfo.displayDrops("(5*)(W) " + items.get(generatedValue));
         appInfo.addLightConeToInventory("(5*)(W) " + items.get(generatedValue));
@@ -135,7 +135,19 @@ public class StandardBanner extends BannerController{
         has4Star = true;
     }
 
-    private void DisplayAndInventoryFor4StarCharacter(List<String> items) {
+    private void displayAndInventoryFor4Star() {
+        int lightConeOrCharacter = rnd.nextInt(2);
+        if (lightConeOrCharacter == 0) {
+            System.out.println("You got a 4* Lightcone!");
+            displayAndInventoryFor4StarLightCone(lightcones.getAllFourStarLightCones());
+        } else {
+            System.out.println("You got a 4* Character!");
+            displayAndInventoryFor4StarCharacter(characters.getAllFourStarCharacters());
+        }
+        FourStarStandardPity = 0;
+    }
+
+    private void displayAndInventoryFor4StarCharacter(List<String> items) {
         int generatedValue = rnd.nextInt(items.size());
         appInfo.displayDrops("(4*)(C) " + items.get(generatedValue));
         appInfo.addCharacterToInventory("(4*)(C) " + items.get(generatedValue));
@@ -143,7 +155,7 @@ public class StandardBanner extends BannerController{
         has4Star = true;
     }
 
-    private void DisplayAndInventoryFor4StarLightCone(List<String> items) {
+    private void displayAndInventoryFor4StarLightCone(List<String> items) {
         int generatedValue = rnd.nextInt(items.size());
         appInfo.displayDrops("(4*)(W) " + items.get(generatedValue));
         appInfo.addLightConeToInventory("(4*)(W) " + items.get(generatedValue));
@@ -151,23 +163,10 @@ public class StandardBanner extends BannerController{
         has4Star = true;
     }
 
-    private void DisplayAndInventoryFor3Star(List<String> items) {
+    private void displayAndInventoryFor3Star(List<String> items) {
         int generatedValue = rnd.nextInt(items.size());
         appInfo.displayDrops("(3*)(W) " + items.get(generatedValue));
     }
-
-    private void DisplayAndInventoryFor4Star() {
-        int lightConeOrCharacter = rnd.nextInt(2);
-        if (lightConeOrCharacter == 0) {
-            System.out.println("You got a 4* Lightcone!");
-            DisplayAndInventoryFor4StarLightCone(lightcones.getFourStarLightCones());
-        } else {
-            System.out.println("You got a 4* Character!");
-            DisplayAndInventoryFor4StarCharacter(characters.getFourStarCharacters());
-        }
-        FourStarStandardPity = 0;
-    }
-
 
     private void resetPities() {
         FourStarStandardPity = 0;

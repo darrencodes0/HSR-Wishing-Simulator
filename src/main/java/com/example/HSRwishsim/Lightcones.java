@@ -8,6 +8,8 @@ public class Lightcones {
         addFiveStarLightCones();
         addFourStarLightCones();
         addThreeStarLightCones();
+        combineAllFourStarLightCones();
+        combineAllFiveStarLightCones();
     }
 
     private void addFeaturedFiveStarLightCones(){
@@ -72,6 +74,18 @@ public class Lightcones {
         }
     }
 
+    public void combineAllFourStarLightCones(){
+        this.AllFourStarLightCones.addAll(FourStarLightCones);
+        this.AllFourStarLightCones.addAll(FeaturedFourStarLightCones);
+    }
+
+    private void combineAllFiveStarLightCones(){
+        this.AllFiveStarLightCones.addAll(FiveStarLightCones);
+        this.AllFiveStarLightCones.addAll(FeaturedFiveStarLightCones);
+    }
+
+
+
 
 
 
@@ -95,10 +109,20 @@ public class Lightcones {
         return FeaturedFourStarLightCones;
     }
 
+    public ArrayList<String> getAllFourStarLightCones(){
+        return this.AllFourStarLightCones;
+    }
+
+    public ArrayList<String> getAllFiveStarLightCones(){
+        return this.AllFiveStarLightCones;
+    }
+
     public Map<String, Integer> getYourLightCones() {
         return yourLightCones;
     }
 
+    private final ArrayList<String> AllFiveStarLightCones = new ArrayList<>();
+    private final ArrayList<String> AllFourStarLightCones = new ArrayList<>();
     private final ArrayList<String> FiveStarLightCones = new ArrayList<>();
     private final ArrayList<String> FourStarLightCones = new ArrayList<>();
     private final ArrayList<String> ThreeStarLightCones = new ArrayList<>();

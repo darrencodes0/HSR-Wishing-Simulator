@@ -46,9 +46,9 @@ public class LightConeBanner extends BannerController{
         FiveStarPityLabel.setText("5* Lightcone Pity: " + appInfo.getFiveStarLightConePity()  + "/90");
         FourStarPityLabel.setText("4* Lightcone Pity: " + appInfo.getFourStarLightConePity() + "/10");
         if(seventyFivePity) {
-            PityActive.setText("Guaranteed Featured Lightcone: NO");
+            PityActive.setText("guaranteed Featured Lightcone: NO");
         } else{
-            PityActive.setText("Guaranteed Featured Lightcone: YES");
+            PityActive.setText("guaranteed Featured Lightcone: YES");
         }
         jadeAmount.setText("" + appInfo.getJade());
     }
@@ -59,54 +59,54 @@ public class LightConeBanner extends BannerController{
         FiveStarLightConePity++;
 
         if (FiveStarLightConePity >= 90) {
-            Guaranteed5StarWeapon();
+            guaranteed5StarWeapon();
         } else if (FourStarLightConePity >= 10) {
-            Guaranteed4StarOr5StarCharacterOrWeapon();
+            guaranteed4StarOr5StarCharacterOrWeapon();
         } else {
-            NormalSummon();
+            normalSummon();
         }
     }
 
-    private void Guaranteed5StarWeapon() {
+    private void guaranteed5StarWeapon() {
         if (seventyFivePity) {
             int winOrLost = rnd.nextInt(2);
             if (winOrLost == 0) {
                 appInfo.setSeventyFiveLightCone(true);
                 System.out.println("YOU WON 75/25! 5* FEATURED LIGHTCONE!");
                 System.out.println("72/25 Pity: " + seventyFivePity);
-                DisplayAndInventoryFor5StarLightCone(lightcones.getFeaturedFiveStarLightCones());
+                displayAndInventoryFor5StarLightCone(lightcones.getFeaturedFiveStarLightCones());
             } else {
                 appInfo.setSeventyFiveLightCone(false);
                 System.out.println("You LOST 75/25 ;-;");
                 // lost 72/25
                 // next time guaranteed
                 System.out.println("75/25 Pity: " + seventyFivePity);
-                DisplayAndInventoryFor5StarLightCone(lightcones.getFiveStarLightCones());
+                displayAndInventoryFor5StarLightCone(lightcones.getFiveStarLightCones());
             }
         } else {
             appInfo.setSeventyFiveLightCone(true);
-            System.out.println("(HIT PITY) Guaranteed 5* featured lightcone");
-            DisplayAndInventoryFor5StarLightCone(lightcones.getFeaturedFiveStarLightCones());
+            System.out.println("(HIT PITY) guaranteed 5* featured lightcone");
+            displayAndInventoryFor5StarLightCone(lightcones.getFeaturedFiveStarLightCones());
             System.out.println("72/25 Pity: " + seventyFivePity);
         }
     }
 
-    private void Guaranteed4StarOr5StarCharacterOrWeapon() {
+    private void guaranteed4StarOr5StarCharacterOrWeapon() {
         double fourStarOrFiveStar = rnd.nextDouble();
 
         if (fourStarOrFiveStar > 0.07) {
             int characterOrWeapon = rnd.nextInt(2);
             if(characterOrWeapon == 0){
                 System.out.println("You got a guaranteed 4* Character!");
-                DisplayAndInventoryFor4StarCharacter(characters.getFourStarCharacters());
+                displayAndInventoryFor4StarCharacter(characters.getFourStarCharacters());
             } else{
                 int featuredOrNot = rnd.nextInt();
                 if(featuredOrNot > 0.25){
                     System.out.println("You got a guaranteed featured 4* Lightcone!");
-                    DisplayAndInventoryFor4StarLightCone(lightcones.getFeaturedFourStarLightCones());
+                    displayAndInventoryFor4StarLightCone(lightcones.getFeaturedFourStarLightCones());
                 } else{
                     System.out.println("You got a guaranteed non-featured 4* Lightcone!");
-                    DisplayAndInventoryFor4StarLightCone(lightcones.getFourStarLightCones());
+                    displayAndInventoryFor4StarLightCone(lightcones.getFourStarLightCones());
                 }
             }
         } else {
@@ -116,25 +116,25 @@ public class LightConeBanner extends BannerController{
                     appInfo.setSeventyFiveLightCone(true);
                     System.out.println("YOU WON 75/25! 4* PITY WITH A 5* FEATURED LIGHTCONE!");
                     System.out.println("72/25 Pity: " + seventyFivePity);
-                    DisplayAndInventoryFor5StarLightCone(lightcones.getFeaturedFiveStarLightCones());
+                    displayAndInventoryFor5StarLightCone(lightcones.getFeaturedFiveStarLightCones());
                 } else {
                     appInfo.setSeventyFiveLightCone(false);
                     System.out.println("You LOST 75/25 ;-;");
                     // lost 72/25
                     // next time guaranteed
                     System.out.println("75/25 Pity: " + seventyFivePity);
-                    DisplayAndInventoryFor5StarLightCone(lightcones.getFiveStarLightCones());
+                    displayAndInventoryFor5StarLightCone(lightcones.getFiveStarLightCones());
                 }
             } else {
                 appInfo.setSeventyFiveLightCone(true);
-                System.out.println("(4* PITY HIT) Guaranteed 5* featured lightcone");
-                DisplayAndInventoryFor5StarLightCone(lightcones.getFeaturedFiveStarLightCones());
+                System.out.println("(4* PITY HIT) guaranteed 5* featured lightcone");
+                displayAndInventoryFor5StarLightCone(lightcones.getFeaturedFiveStarLightCones());
                 System.out.println("72/25 Pity: " + seventyFivePity);
             }
         }
     }
 
-    private void NormalSummon() {
+    private void normalSummon() {
         double generatedNumber = rnd.nextDouble();
 
         if (generatedNumber < normal5StarLightConeRate) {
@@ -144,29 +144,29 @@ public class LightConeBanner extends BannerController{
                     appInfo.setSeventyFiveLightCone(true);
                     System.out.println("YOU WON 75/25! 5* FEATURED LIGHTCONE!");
                     System.out.println("72/25 Pity: " + seventyFivePity);
-                    DisplayAndInventoryFor5StarLightCone(lightcones.getFeaturedFiveStarLightCones());
+                    displayAndInventoryFor5StarLightCone(lightcones.getFeaturedFiveStarLightCones());
                 } else {
                     appInfo.setSeventyFiveLightCone(false);
                     System.out.println("You LOST 75/25 ;-;");
                     // lost 72/25
                     // next time guaranteed
                     System.out.println("75/25 Pity: " + seventyFivePity);
-                    DisplayAndInventoryFor5StarLightCone(lightcones.getFiveStarLightCones());
+                    displayAndInventoryFor5StarLightCone(lightcones.getFiveStarLightCones());
                 }
             } else {
                 appInfo.setSeventyFiveLightCone(true);
-                System.out.println("(BEFORE PITY) Guaranteed 5* featured lightcone");
-                DisplayAndInventoryFor5StarLightCone(lightcones.getFeaturedFiveStarLightCones());
+                System.out.println("(BEFORE PITY) guaranteed 5* featured lightcone");
+                displayAndInventoryFor5StarLightCone(lightcones.getFeaturedFiveStarLightCones());
                 System.out.println("72/25 Pity: " + seventyFivePity);
             }
         } else if (generatedNumber < (normal5StarLightConeRate + normal4StarCharacterOrWeaponRate)) {
-            DisplayAndInventoryFor4Star();
+            displayAndInventoryFor4Star();
         } else {
-            DisplayAndInventoryFor3Star(lightcones.getThreeStarLightCones());
+            displayAndInventoryFor3Star(lightcones.getThreeStarLightCones());
         }
     }
 
-    private void DisplayAndInventoryFor5StarLightCone(List<String> items) {
+    private void displayAndInventoryFor5StarLightCone(List<String> items) {
         int generatedValue = rnd.nextInt(items.size());
         appInfo.displayDrops("(5*)(W) " + items.get(generatedValue));
         appInfo.addLightConeToInventory("(5*)(W) " + items.get(generatedValue));
@@ -175,7 +175,25 @@ public class LightConeBanner extends BannerController{
         has4Star = true;
     }
 
-    private void DisplayAndInventoryFor4StarCharacter(List<String> items) {
+    private void displayAndInventoryFor4Star() {
+        int lightConeOrCharacter = rnd.nextInt(2);
+        if (lightConeOrCharacter == 0) {
+            int featuredOrNot = rnd.nextInt();
+            if(featuredOrNot > 0.25){
+                System.out.println("You got a featured 4* Lightcone!");
+                displayAndInventoryFor4StarLightCone(lightcones.getFeaturedFourStarLightCones());
+            } else{
+                System.out.println("You got a non-featured 4* Lightcone!");
+                displayAndInventoryFor4StarLightCone(lightcones.getFourStarLightCones());
+            }
+        } else {
+            System.out.println("You got a 4* Character!");
+            displayAndInventoryFor4StarCharacter(characters.getFourStarCharacters());
+        }
+        FourStarLightConePity = 0;
+    }
+
+    private void displayAndInventoryFor4StarCharacter(List<String> items) {
         int generatedValue = rnd.nextInt(items.size());
         appInfo.displayDrops("(4*)(C) " + items.get(generatedValue));
         appInfo.addCharacterToInventory("(4*)(C) " + items.get(generatedValue));
@@ -183,7 +201,7 @@ public class LightConeBanner extends BannerController{
         FourStarLightConePity = 0;
     }
 
-    private void DisplayAndInventoryFor4StarLightCone(List<String> items) {
+    private void displayAndInventoryFor4StarLightCone(List<String> items) {
         int generatedValue = rnd.nextInt(items.size());
         appInfo.displayDrops("(4*)(W) " + items.get(generatedValue));
         appInfo.addLightConeToInventory("(4*)(W) " + items.get(generatedValue));
@@ -191,27 +209,9 @@ public class LightConeBanner extends BannerController{
         FourStarLightConePity = 0;
     }
 
-    private void DisplayAndInventoryFor3Star(List<String> items) {
+    private void displayAndInventoryFor3Star(List<String> items) {
         int generatedValue = rnd.nextInt(items.size());
         appInfo.displayDrops("(3*)(W) " + items.get(generatedValue));
-    }
-
-    private void DisplayAndInventoryFor4Star() {
-        int lightConeOrCharacter = rnd.nextInt(2);
-        if (lightConeOrCharacter == 0) {
-            int featuredOrNot = rnd.nextInt();
-            if(featuredOrNot > 0.25){
-                System.out.println("You got a featured 4* Lightcone!");
-                DisplayAndInventoryFor4StarLightCone(lightcones.getFeaturedFourStarLightCones());
-            } else{
-                System.out.println("You got a non-featured 4* Lightcone!");
-                DisplayAndInventoryFor4StarLightCone(lightcones.getFourStarLightCones());
-            }
-        } else {
-            System.out.println("You got a 4* Character!");
-            DisplayAndInventoryFor4StarCharacter(characters.getFourStarCharacters());
-        }
-        FourStarLightConePity = 0;
     }
 
     private void resetPities() {

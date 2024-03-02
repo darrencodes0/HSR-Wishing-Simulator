@@ -8,6 +8,8 @@ public class Characters{
     private final ArrayList<String> FeaturedFourStarCharacters = new ArrayList<>();
     private final ArrayList<String> FeaturedFiveStarCharacters = new ArrayList<>();
     private final Map<String,Integer> yourCharacters = new HashMap<>();
+    private final ArrayList<String> AllFiveStarCharacters = new ArrayList<>();
+    private final ArrayList<String> AllFourStarCharacters= new ArrayList<>();
 
     public Characters(){
         addInFeatureFiveStarCharacters("Dan Heng - Imbibtor Lunae");
@@ -16,6 +18,18 @@ public class Characters{
         addInFourStarCharacters("Pela","Natasha",
                 "Serval","Arlan","Hook","Sushang","Qingque","Dan Heng"
                 ,"Luka","Herta","Sampo","Tingyun","Yukong","Asta","March 7th");
+        combineAllFourStarCharacters();
+        combineAllFiveStarCharacters();
+    }
+
+    public void combineAllFourStarCharacters(){
+        this.AllFourStarCharacters.addAll(FourStarCharacters);
+        this.AllFourStarCharacters.addAll(FeaturedFourStarCharacters);
+    }
+
+    private void combineAllFiveStarCharacters(){
+        this.AllFiveStarCharacters.addAll(FiveStarCharacters);
+        this.AllFiveStarCharacters.addAll(FeaturedFiveStarCharacters);
     }
 
     private void addInFeatureFiveStarCharacters(String... characters){
@@ -40,6 +54,14 @@ public class Characters{
         for(String character: characters){
             FourStarCharacters.add(character);
         }
+    }
+
+    public ArrayList<String> getAllFourStarCharacters(){
+        return this.AllFourStarCharacters;
+    }
+
+    public ArrayList<String> getAllFiveStarCharacters(){
+        return this.AllFiveStarCharacters;
     }
 
     public List<String> getFeaturedFiveStarCharacters(){

@@ -54,50 +54,50 @@ public class EventBanner extends BannerController{
         FiveStarPity++;
 
         if (FiveStarPity >= 90) {
-            Guaranteed5StarCharacter();
+            guaranteed5StarCharacter();
         } else if (FourStarPity >= 10) {
-            Guaranteed4or5Star();
+            guaranteed4or5Star();
         } else {
             normalSummon();
         }
     }
 
-    private void Guaranteed5StarCharacter() {
+    private void guaranteed5StarCharacter() {
         if (fiftyFiftyPity) {
             int winOrLost = rnd.nextInt(2);
             if (winOrLost == 0) {
                 AppInfo.getInstance().setFiftyFiftyEvent(true);
                 System.out.println("YOU WON 50/50! 5* FEATURED CHARACTER");
                 System.out.println("Fifty Fifty Pity: " + fiftyFiftyPity);
-                DisplayAndInventoryFor5Star(characters.getFeaturedFiveStarCharacters());
+                displayAndInventoryFor5Star(characters.getFeaturedFiveStarCharacters());
             } else {
                 AppInfo.getInstance().setFiftyFiftyEvent(false);
                 System.out.println("You lost 50/50 :C");
                 // lost 50/50
                 // next time guaranteed
                 System.out.println("Fifty Fifty Pity: " + fiftyFiftyPity);
-                DisplayAndInventoryFor5Star(characters.getFiveStarCharacters());
+                displayAndInventoryFor5Star(characters.getFiveStarCharacters());
             }
         } else {
             AppInfo.getInstance().setFiftyFiftyEvent(true);
             System.out.println("(HIT PITY) Guaranteed 5* featured character");
-            DisplayAndInventoryFor5Star(characters.getFeaturedFiveStarCharacters());
+            displayAndInventoryFor5Star(characters.getFeaturedFiveStarCharacters());
             System.out.println("Fifty Fifty Pity: " + fiftyFiftyPity);
         }
     }
 
 
-    private void Guaranteed4or5Star() {
+    private void guaranteed4or5Star() {
         double fourStarOrFiveStar = rnd.nextDouble();
         double featuredOrNot = rnd.nextDouble(); // 75% chance of featured;
 
         if (fourStarOrFiveStar > 0.06) {
             if(featuredOrNot > 0.25){
                 System.out.println("You got a guaranteed featured 4* Character!");
-                DisplayAndInventoryFor4StarCharacter(characters.getFeaturedFourStarCharacters());
+                displayAndInventoryFor4StarCharacter(characters.getFeaturedFourStarCharacters());
             } else{
                 System.out.println("You got a guaranteed non-featured 4* Character!");
-                DisplayAndInventoryFor4StarCharacter(characters.getFourStarCharacters());
+                displayAndInventoryFor4StarCharacter(characters.getFourStarCharacters());
             }
         } else {
             if (fiftyFiftyPity) {
@@ -106,19 +106,19 @@ public class EventBanner extends BannerController{
                     AppInfo.getInstance().setFiftyFiftyEvent(true);
                     System.out.println("YOU WON 50/50! 5* FEATURED CHARACTER");
                     System.out.println("Fifty Fifty Pity: " + fiftyFiftyPity);
-                    DisplayAndInventoryFor5Star(characters.getFeaturedFiveStarCharacters());
+                    displayAndInventoryFor5Star(characters.getFeaturedFiveStarCharacters());
                 } else {
                     AppInfo.getInstance().setFiftyFiftyEvent(false);
                     System.out.println("You lost 50/50 :C");
                     // lost 50/50
                     // next time guaranteed
                     System.out.println("Fifty Fifty Pity: " + fiftyFiftyPity);
-                    DisplayAndInventoryFor5Star(characters.getFiveStarCharacters());
+                    displayAndInventoryFor5Star(characters.getFiveStarCharacters());
                 }
             } else {
                 AppInfo.getInstance().setFiftyFiftyEvent(true);
                 System.out.println("(HIT PITY) Guaranteed 5* featured character from 4* pity");
-                DisplayAndInventoryFor5Star(characters.getFeaturedFiveStarCharacters());
+                displayAndInventoryFor5Star(characters.getFeaturedFiveStarCharacters());
                 System.out.println("Fifty Fifty Pity: " + fiftyFiftyPity);
             }
         }
@@ -134,29 +134,29 @@ public class EventBanner extends BannerController{
                     AppInfo.getInstance().setFiftyFiftyEvent(true);
                     System.out.println("YOU WON 50/50! 5* FEATURED CHARACTER");
                     System.out.println("Fifty Fifty Pity: " + fiftyFiftyPity);
-                    DisplayAndInventoryFor5Star(characters.getFeaturedFiveStarCharacters());
+                    displayAndInventoryFor5Star(characters.getFeaturedFiveStarCharacters());
                 } else {
                     AppInfo.getInstance().setFiftyFiftyEvent(false);
                     System.out.println("You lost 50/50 :C");
                     // lost 50/50
                     // next time guaranteed
                     System.out.println("Fifty Fifty Pity: " + fiftyFiftyPity);
-                    DisplayAndInventoryFor5Star(characters.getFiveStarCharacters());
+                    displayAndInventoryFor5Star(characters.getFiveStarCharacters());
                 }
             } else {
                 AppInfo.getInstance().setFiftyFiftyEvent(true);
                 System.out.println("(LUCKY NORMAL) Guaranteed 5* featured character");
-                DisplayAndInventoryFor5Star(characters.getFeaturedFiveStarCharacters());
+                displayAndInventoryFor5Star(characters.getFeaturedFiveStarCharacters());
                 System.out.println("Fifty Fifty Pity: " + fiftyFiftyPity);
             }
         } else if (generatedNumber < (normal5StarCharacterRate + normal4StarCharacterOrWeaponRate)) {
-            DisplayFor4Star();
+            displayFor4Star();
         } else {
-            DisplayFor3Star(lightcones.getThreeStarLightCones());
+            displayFor3Star(lightcones.getThreeStarLightCones());
         }
     }
 
-    private void DisplayAndInventoryFor5Star(List<String> items) {
+    private void displayAndInventoryFor5Star(List<String> items) {
             int generatedValue = rnd.nextInt(items.size());
             AppInfo.getInstance().displayDrops("(5*)(C) " + items.get(generatedValue));
             AppInfo.getInstance().addCharacterToInventory("(5*)(C) " + items.get(generatedValue));
@@ -165,7 +165,25 @@ public class EventBanner extends BannerController{
         resetPities();
     }
 
-    private void DisplayAndInventoryFor4StarLightCone(List<String> items) {
+    private void displayFor4Star() {
+        int lightConeOrCharacter = rnd.nextInt(2);
+        if (lightConeOrCharacter == 0) {
+            System.out.println("You got a 4* Lightcone!");
+            displayAndInventoryFor4StarLightCone(lightcones.getFourStarLightCones());
+        } else {
+            int featuredOrNot = rnd.nextInt();
+            if(featuredOrNot > 0.25){
+                System.out.println("You got a featured 4* Character!");
+                displayAndInventoryFor4StarCharacter(characters.getFeaturedFourStarCharacters());
+            } else{
+                System.out.println("You got a non-featured 4* Character!");
+                displayAndInventoryFor4StarCharacter(characters.getFourStarCharacters());
+            }
+        }
+        FourStarPity = 0;
+    }
+
+    private void displayAndInventoryFor4StarLightCone(List<String> items) {
         int generatedValue = rnd.nextInt(items.size());
         AppInfo.getInstance().displayDrops("(4*)(W) " + items.get(generatedValue));
         AppInfo.getInstance().addLightConeToInventory("(4*)(W) " + items.get(generatedValue));
@@ -173,7 +191,7 @@ public class EventBanner extends BannerController{
         FourStarPity = 0;
     }
 
-    private void DisplayAndInventoryFor4StarCharacter(List<String> items) {
+    private void displayAndInventoryFor4StarCharacter(List<String> items) {
         int generatedValue = rnd.nextInt(items.size());
         AppInfo.getInstance().displayDrops("(4*)(C) " + items.get(generatedValue));
         AppInfo.getInstance().addCharacterToInventory("(4*)(C) " + items.get(generatedValue));
@@ -181,27 +199,9 @@ public class EventBanner extends BannerController{
         FourStarPity = 0;
     }
 
-    private void DisplayFor3Star(List<String> items) {
+    private void displayFor3Star(List<String> items) {
         int generatedValue = rnd.nextInt(items.size());
         AppInfo.getInstance().displayDrops("(3*)(W) " + items.get(generatedValue));
-    }
-
-    private void DisplayFor4Star() {
-        int lightConeOrCharacter = rnd.nextInt(2);
-        if (lightConeOrCharacter == 0) {
-            System.out.println("You got a 4* Lightcone!");
-            DisplayAndInventoryFor4StarLightCone(lightcones.getFourStarLightCones());
-        } else {
-            int featuredOrNot = rnd.nextInt();
-            if(featuredOrNot > 0.25){
-                System.out.println("You got a featured 4* Character!");
-                DisplayAndInventoryFor4StarCharacter(characters.getFeaturedFourStarCharacters());
-            } else{
-                System.out.println("You got a non-featured 4* Character!");
-                DisplayAndInventoryFor4StarCharacter(characters.getFourStarCharacters());
-            }
-        }
-        FourStarPity = 0;
     }
 
     protected void resetPities() {
