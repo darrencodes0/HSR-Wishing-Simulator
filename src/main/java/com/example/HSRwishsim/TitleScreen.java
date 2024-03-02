@@ -1,8 +1,6 @@
 package com.example.HSRwishsim;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.TextField;
 import java.io.File;
 import java.io.IOException;
@@ -49,7 +47,7 @@ public class TitleScreen{
             AppInfo.getInstance().setJades(jades);
 
         } catch (NumberFormatException e) {
-            displayAlert("INSERT JADE ERROR: Invalid input. Please enter a positive integer, if no jades, type in 0");
+            sceneDisplay.displayAlert("INSERT JADE ERROR: Invalid input. Please enter a positive integer, if no jades, type in 0");
             return;
         }
 
@@ -63,7 +61,7 @@ public class TitleScreen{
             AppInfo.getInstance().setStandardTickets(standardTickets);
             }
         catch (NumberFormatException e) {
-            displayAlert("INSERT STANDARD TICKETS ERROR: Invalid input. Please enter a positive integer, if NONE, type in 0");
+            sceneDisplay.displayAlert("INSERT STANDARD TICKETS ERROR: Invalid input. Please enter a positive integer, if NONE, type in 0");
             return;
         }
 
@@ -77,7 +75,7 @@ public class TitleScreen{
             AppInfo.getInstance().setEventTickets(eventTickets);
 
         } catch (NumberFormatException e) {
-            displayAlert("INSERT EVENT TICKETS ERROR: Invalid Input, Please enter a positive integer, if NONE, type in 0.");
+            sceneDisplay.displayAlert("INSERT EVENT TICKETS ERROR: Invalid Input, Please enter a positive integer, if NONE, type in 0.");
             return;
         }
 
@@ -85,14 +83,6 @@ public class TitleScreen{
         sceneDisplay.displayScene("eventBanner.fxml",event);
     }
 
-
-    private void displayAlert(String message) {
-        Alert alert = new Alert(AlertType.ERROR);
-        alert.setTitle("ERROR");
-        alert.setHeaderText(null);
-        alert.setContentText(message);
-        alert.showAndWait();
-    }
 }
 
 

@@ -89,10 +89,16 @@ public class EventBanner extends BannerController{
 
     private void Guaranteed4or5Star() {
         double fourStarOrFiveStar = rnd.nextDouble();
+        double featuredOrNot = rnd.nextDouble(); // 75% chance of featured;
 
-        if (fourStarOrFiveStar > 0.07) {
-            System.out.println("You got a guaranteed 4* Character!");
-            DisplayAndInventoryFor4StarCharacter(characters.getFourStarCharacters());
+        if (fourStarOrFiveStar > 0.06) {
+            if(featuredOrNot > 0.25){
+                System.out.println("You got a guaranteed featured 4* Character!");
+                DisplayAndInventoryFor4StarCharacter(characters.getFeaturedFourStarCharacters());
+            } else{
+                System.out.println("You got a guaranteed non-featured 4* Character!");
+                DisplayAndInventoryFor4StarCharacter(characters.getFourStarCharacters());
+            }
         } else {
             if (fiftyFiftyPity) {
                 int winOrLost = rnd.nextInt(2);
@@ -186,8 +192,14 @@ public class EventBanner extends BannerController{
             System.out.println("You got a 4* Lightcone!");
             DisplayAndInventoryFor4StarLightCone(lightcones.getFourStarLightCones());
         } else {
-            System.out.println("You got a 4* Character!");
-            DisplayAndInventoryFor4StarCharacter(characters.getFourStarCharacters());
+            int featuredOrNot = rnd.nextInt();
+            if(featuredOrNot > 0.25){
+                System.out.println("You got a featured 4* Character!");
+                DisplayAndInventoryFor4StarCharacter(characters.getFeaturedFourStarCharacters());
+            } else{
+                System.out.println("You got a non-featured 4* Character!");
+                DisplayAndInventoryFor4StarCharacter(characters.getFourStarCharacters());
+            }
         }
         FourStarPity = 0;
     }

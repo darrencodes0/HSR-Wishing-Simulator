@@ -10,22 +10,22 @@ public class Lightcones {
         addThreeStarLightCones();
     }
 
-    public void addFeaturedFiveStarLightCones(){
+    private void addFeaturedFiveStarLightCones(){
         addInFeaturedFiveStarLightCones("Brighter Than The Sun");
     }
 
-    public void addFeaturedFourStarLightCones(){
+    private void addFeaturedFourStarLightCones(){
         addInFeaturedFourStarLightCones("Planetary Rendezvous",
                 "Dance! Dance! Dance!",
                 "Landau's Choice");
     }
 
-    public void addFiveStarLightCones(){
+    private void addFiveStarLightCones(){
         addInFiveStarLightCones("Sleep Like The Dead","Night on the Milky Way",
                 "Battle isn't over", "Something Irreplacable");
     }
 
-    public void addFourStarLightCones() {
+    private void addFourStarLightCones() {
         addInFourStarLightCones("Good Night and Sleep Well","Day One of My New Life","Only Silence Remains",
                 "The Moles Welcome You","The Birth of the Self","Shared Feeling","Swordplay","Make the World Clamor",
                 "Perfect Timing","Resolution Shines As Pearls of Sweat","Subscribe for More!", "Under the Blue Sky","Geniuses' Repose","Trend of the Universal Market",
@@ -34,7 +34,7 @@ public class Lightcones {
                 "Landau's Choice");
     }
 
-    public void addThreeStarLightCones(){
+    private void addThreeStarLightCones(){
         addInThreeStarLightCones("Cornucopia","Collapsing Sky", "Amber",
                 "Chorus","Data Bank","Darting Arrow","Shattered Home",
                 "Defense","Loop","Passkey","Adversarial","Multiplication",
@@ -42,31 +42,31 @@ public class Lightcones {
                 "Fine Fruit","Meshing Cogs","Mutual Demise","Sagacity");
     }
 
-    public void addInFeaturedFourStarLightCones(String... lightcones){
+    private void addInFeaturedFourStarLightCones(String... lightcones){
         for(String lightcone: lightcones){
             FeaturedFourStarLightCones.add(lightcone);
         }
     }
 
-    public void addInFourStarLightCones(String... lightcones){
+    private void addInFourStarLightCones(String... lightcones){
         for(String lightcone: lightcones){
             FourStarLightCones.add(lightcone);
         }
     }
 
-    public void addInFeaturedFiveStarLightCones(String... lightcones){
+    private void addInFeaturedFiveStarLightCones(String... lightcones){
         for(String lightcone: lightcones){
             FeaturedFiveStarLightCones.add(lightcone);
         }
     }
 
-    public void addInFiveStarLightCones(String... lightcones){
+    private void addInFiveStarLightCones(String... lightcones){
         for(String lightcone: lightcones){
             FiveStarLightCones.add(lightcone);
         }
     }
 
-    public void addInThreeStarLightCones(String... lightcones){
+    private void addInThreeStarLightCones(String... lightcones){
         for(String lightcone: lightcones){
             ThreeStarLightCones.add(lightcone);
         }

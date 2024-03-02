@@ -31,23 +31,23 @@ public class StandardBanner extends BannerController{
     Label jadeAmount;
 
     public void initialize(){
-        StandardBannerTickets.setText("" + AppInfo.getInstance().getStandardTickets());
-        FiveStarPityLabel.setText("5* Standard Pity: " + AppInfo.getInstance().getFiveStarStandardPity()  + "/90");
-        FourStarPityLabel.setText("4* Standard Pity: " + AppInfo.getInstance().getFourStarStandardPity() + "/10");
-        jadeAmount.setText("" + AppInfo.getInstance().getJade());
+        StandardBannerTickets.setText("" + appInfo.getStandardTickets());
+        FiveStarPityLabel.setText("5* Standard Pity: " + appInfo.getFiveStarStandardPity()  + "/90");
+        FourStarPityLabel.setText("4* Standard Pity: " + appInfo.getFourStarStandardPity() + "/10");
+        jadeAmount.setText("" + appInfo.getJade());
     }
 
     public static boolean checkingDrops = false;
     public static boolean ticketConversion = false;
     public static boolean summonedOnStandardBanner = false;
-    private int FiveStarStandardPity = AppInfo.getInstance().getFiveStarStandardPity();
-    private int FourStarStandardPity = AppInfo.getInstance().getFourStarStandardPity();
+    private int FiveStarStandardPity = appInfo.getFiveStarStandardPity();
+    private int FourStarStandardPity = appInfo.getFourStarStandardPity();
     double normal5StarCharacterRate = 0.006;   // 0.6%
     double normal4StarCharacterOrWeaponRate = 0.051;  // 5.1%
     double normal3StarWeapon = 0.943;   // 94.3%
     private boolean has4Star = false;
     private boolean has5Star = false;
-    private final int standardTickets = AppInfo.getInstance().getStandardTickets();
+    private final int standardTickets = appInfo.getStandardTickets();
 
     public void summoningMechanics(ActionEvent event) {
 
@@ -57,7 +57,7 @@ public class StandardBanner extends BannerController{
         if (FiveStarStandardPity >= 90) {
             Guaranteed5StarCharacterorWeapon();
         } else if (FourStarStandardPity >= 10) {
-            Guaranteed4StarOr5StarCharacter();
+            Guaranteed4StarOr5StarWeaponorCharacter();
         } else {
             NormalSummon();
         }
@@ -74,12 +74,18 @@ public class StandardBanner extends BannerController{
         }
     }
 
-    private void Guaranteed4StarOr5StarCharacter() {
+    private void Guaranteed4StarOr5StarWeaponorCharacter() {
         double fourStarOrFiveStar = rnd.nextDouble();
 
         if (fourStarOrFiveStar > 0.07) {
-            System.out.println("You got a guaranteed 4* Character!");
-            DisplayAndInventoryFor4StarCharacter(characters.getFourStarCharacters());
+            int weaponOrCharacter = rnd.nextInt(2);
+            if(weaponOrCharacter == 0) {
+                System.out.println("You got a guaranteed 4* Character!");
+                DisplayAndInventoryFor4StarCharacter(characters.getFourStarCharacters());
+            } else{
+                System.out.println("You got a guaranteed 4* Lightcone!");
+                DisplayAndInventoryFor4StarLightCone(lightcones.getFourStarLightCones());
+            }
         } else {
             int characterOrWeapon = rnd.nextInt(2);
             if(characterOrWeapon == 0){
@@ -113,8 +119,8 @@ public class StandardBanner extends BannerController{
 
     private void DisplayAndInventoryFor5StarCharacter(List<String> items) {
         int generatedValue = rnd.nextInt(items.size());
-        AppInfo.getInstance().displayDrops("(5*)(C) " + items.get(generatedValue));
-        AppInfo.getInstance().addCharacterToInventory("(5*)(C) " + items.get(generatedValue));
+        appInfo.displayDrops("(5*)(C) " + items.get(generatedValue));
+        appInfo.addCharacterToInventory("(5*)(C) " + items.get(generatedValue));
         resetPities();
         has5Star = true;
         has4Star = true;
@@ -122,8 +128,8 @@ public class StandardBanner extends BannerController{
 
     private void DisplayAndInventoryFor5StarLightCone(List<String> items) {
         int generatedValue = rnd.nextInt(items.size());
-        AppInfo.getInstance().displayDrops("(5*)(W) " + items.get(generatedValue));
-        AppInfo.getInstance().addLightConeToInventory("(5*)(W) " + items.get(generatedValue));
+        appInfo.displayDrops("(5*)(W) " + items.get(generatedValue));
+        appInfo.addLightConeToInventory("(5*)(W) " + items.get(generatedValue));
         resetPities();
         has5Star = true;
         has4Star = true;
@@ -131,23 +137,23 @@ public class StandardBanner extends BannerController{
 
     private void DisplayAndInventoryFor4StarCharacter(List<String> items) {
         int generatedValue = rnd.nextInt(items.size());
-        AppInfo.getInstance().displayDrops("(4*)(C) " + items.get(generatedValue));
-        AppInfo.getInstance().addCharacterToInventory("(4*)(C) " + items.get(generatedValue));
+        appInfo.displayDrops("(4*)(C) " + items.get(generatedValue));
+        appInfo.addCharacterToInventory("(4*)(C) " + items.get(generatedValue));
         FourStarStandardPity = 0;
         has4Star = true;
     }
 
     private void DisplayAndInventoryFor4StarLightCone(List<String> items) {
         int generatedValue = rnd.nextInt(items.size());
-        AppInfo.getInstance().displayDrops("(4*)(W) " + items.get(generatedValue));
-        AppInfo.getInstance().addLightConeToInventory("(4*)(W) " + items.get(generatedValue));
+        appInfo.displayDrops("(4*)(W) " + items.get(generatedValue));
+        appInfo.addLightConeToInventory("(4*)(W) " + items.get(generatedValue));
         FourStarStandardPity = 0;
         has4Star = true;
     }
 
     private void DisplayAndInventoryFor3Star(List<String> items) {
         int generatedValue = rnd.nextInt(items.size());
-        AppInfo.getInstance().displayDrops("(3*)(W) " + items.get(generatedValue));
+        appInfo.displayDrops("(3*)(W) " + items.get(generatedValue));
     }
 
     private void DisplayAndInventoryFor4Star() {
@@ -187,7 +193,6 @@ public class StandardBanner extends BannerController{
             summoningMechanics(event);
         }
 
-        AppInfo appInfo = AppInfo.getInstance();
         appInfo.setSummonsDone(appInfo.getSummonsDone() + numberOfSummons);
         appInfo.setStandardTickets(standardTickets - numberOfSummons);
         displayWishAnimation(event);

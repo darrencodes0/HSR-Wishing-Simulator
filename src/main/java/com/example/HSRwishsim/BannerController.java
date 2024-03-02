@@ -13,6 +13,7 @@ public abstract class BannerController {
     Lightcones lightcones = new Lightcones();
     SceneDisplay sceneDisplay = new SceneDisplay();
     DisplayDrops displayDrops = new DisplayDrops();
+    AppInfo appInfo = AppInfo.getInstance();
     public static boolean checkingDrops = false;
     public static boolean ticketConversion = false;
     final int summonCost = 160;
@@ -24,7 +25,4 @@ public abstract class BannerController {
     public abstract void singleSummon(ActionEvent event) throws IOException;
     public abstract void multiSummon(ActionEvent event) throws IOException;
     public abstract void checkDrops(ActionEvent event) throws IOException;
-
-
-    // You can add more shared methods or fields here
 }

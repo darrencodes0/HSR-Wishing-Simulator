@@ -33,7 +33,7 @@ public class Wishes implements Initializable {
         mediaController.getMediaPlayer().play();
         mediaController.getMediaPlayer().setOnEndOfMedia(() -> {
             try {
-                replaceMediaPlayer("displayDrops.fxml");
+                replaceMediaPlayer();
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -45,8 +45,8 @@ public class Wishes implements Initializable {
         sceneDisplay.displayScene("displayDrops.fxml", event);
     }
 
-    private void replaceMediaPlayer(String fxmlFile) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlFile));
+    private void replaceMediaPlayer() throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("displayDrops.fxml"));
         Parent root = loader.load();
         Stage stage = (Stage) this.mediaView.getScene().getWindow();
         Scene scene = new Scene(root);
