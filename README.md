@@ -7,7 +7,7 @@ Utilized Maven, SceneBuilder, and JavaFX to build proj.
 ### Future Updates:
 - Polishing UI design
 - Adding additional banners
-- 
+
 # Pictures 
 - ![TOS](https://github.com/darrencodes0/HSR-Wishing-Simulator/assets/126924973/19b96048-ab51-4b8f-bb10-d0f4b469b166)
 - ![submit](https://github.com/darrencodes0/HSR-Wishing-Simulator/assets/126924973/075b20b2-ea14-4025-862b-6093d991f1e8)
