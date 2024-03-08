@@ -7,11 +7,11 @@ If you want to run the sim, import this into your IDE
 ### Future Updates:
 - Polishing UI design
 - Adding additional banners
-
+- 
 # Pictures 
-- ![Screenshot 2024-03-07 215206](https://github.com/darrencodes0/HSR-Wishing-Simulator/assets/126924973/1522ff32-6150-48f7-b138-9b0bad6628ed)  
-- ![submit](https://github.com/darrencodes0/HSR-Wishing-Simulator/assets/126924973/99ab2419-f610-4fd1-9bc2-31a1f712e2cf)  
-- ![danheng](https://github.com/darrencodes0/HSR-Wishing-Simulator/assets/126924973/de814501-4868-407f-b00e-59af759e59c5)  
+- ![TOS](https://github.com/darrencodes0/HSR-Wishing-Simulator/assets/126924973/19b96048-ab51-4b8f-bb10-d0f4b469b166)
+- ![submit](https://github.com/darrencodes0/HSR-Wishing-Simulator/assets/126924973/075b20b2-ea14-4025-862b-6093d991f1e8)
+- ![danheng](https://github.com/darrencodes0/HSR-Wishing-Simulator/assets/126924973/ccf26cb2-ec98-43f4-99d1-9d01ff5eaef7)
 - ![lightconebanner](https://github.com/darrencodes0/HSR-Wishing-Simulator/assets/126924973/b84de7e8-fcbd-4d69-bc52-f73c48086d76)  
 - ![standard](https://github.com/darrencodes0/HSR-Wishing-Simulator/assets/126924973/da6fd3b3-504e-49fa-825e-a0485e014742)  
 - ![drops](https://github.com/darrencodes0/HSR-Wishing-Simulator/assets/126924973/e9378b20-7e2e-482e-be52-b040dffd33cc)  
