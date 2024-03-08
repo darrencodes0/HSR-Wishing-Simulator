@@ -17,3 +17,5 @@ If you want to run the sim, import this into your IDE
 - ![drops](https://github.com/darrencodes0/HSR-Wishing-Simulator/assets/126924973/e9378b20-7e2e-482e-be52-b040dffd33cc)  
 - ![showdrops](https://github.com/darrencodes0/HSR-Wishing-Simulator/assets/126924973/a22310d9-684d-47ee-b6c9-1be52522b6ee)  
 - ![jade conversion](https://github.com/darrencodes0/HSR-Wishing-Simulator/assets/126924973/2c543a58-33ad-41c8-9422-83aa9bb494ef)  
+
+Credits to Honkai Star Rail
