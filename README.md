@@ -18,4 +18,4 @@ Utilized Maven, SceneBuilder, and JavaFX to build proj.
 - ![showdrops](https://github.com/darrencodes0/HSR-Wishing-Simulator/assets/126924973/a22310d9-684d-47ee-b6c9-1be52522b6ee)
   Will only showcase 4* and 5* drops because 3* drops are unnecessary
 
-Credits to Honkai Star Rail
+##### All credits to Honkai Star Rail
