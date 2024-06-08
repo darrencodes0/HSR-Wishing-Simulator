@@ -1,6 +1,6 @@
-# Honkai Star Rail Wishing Simulator
+# Honkai: Star Rail Wishing Simulator
 Utilized Maven, SceneBuilder, and JavaFX to build proj.  
-### If you want to run the sim, import the files into your IDE 
+#### If you want to run the sim, import the files into your IDE 
 
 ## RECENT UPDATE: Fixed a bug that occurred when skipping wishing animation
 
